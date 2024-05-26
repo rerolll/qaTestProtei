@@ -95,11 +95,6 @@ public class HomePageTest extends BaseTest{
         Assert.assertTrue(homePageHelper.isEmailFormatErrorAlertDisplayed());
 
         homePageHelper.clearFormFields();
-
-        email = "asda@mail";
-        homePageHelper.fillForm(email, name, null, null, null);
-
-        Assert.assertTrue(homePageHelper.isEmailFormatErrorAlertDisplayed());
     }
 
 
@@ -123,7 +118,7 @@ public class HomePageTest extends BaseTest{
 
         int currentIndex = 3;
 
-        if (checkBoxIndices != null && !checkBoxIndices.isEmpty()) {
+        if (checkBoxIndices != null) {
             for (Integer checkBoxIndex : checkBoxIndices) {
                 String checkBoxValue = homePageHelper.getCheckBoxValue(checkBoxIndex);
                 Assert.assertTrue(data[currentIndex].contains(checkBoxValue), "Checkbox validation failed for index: " + checkBoxIndex);

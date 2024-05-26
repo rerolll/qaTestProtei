@@ -67,7 +67,7 @@ public class BaseTest {
     public void initWebDriver(){
         WebDriverManager.chromedriver().setup();
         chromeOptions = new ChromeOptions();
-        //chromeOptions.addArguments("--headless=new");
+        chromeOptions.addArguments("--headless=new");
         chromeOptions.addArguments("window-size=1920, 1080");
         driver = new ChromeDriver(chromeOptions);
         homePageHelper = PageFactory.initElements(driver, HomePageHelper.class);
