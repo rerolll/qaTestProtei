@@ -18,14 +18,11 @@ public class HomePageTest extends BaseTest{
 
     HomePageHelper homePageHelper;
 
-    @BeforeClass
-    public void login_in(){
-        homePageHelper = PageFactory.initElements(driver, HomePageHelper.class);
-        homePageHelper.login(VALID_EMAIL, VALID_PASSWORD);
-    }
-
     @BeforeMethod
     public void initTests(Method method){
+        homePageHelper = PageFactory.initElements(driver, HomePageHelper.class);
+        driver.navigate().refresh();
+        homePageHelper.login(VALID_EMAIL, VALID_PASSWORD);
         Test testAnnotation = method.getAnnotation(Test.class);
         testCaseId = testAnnotation.description();
     }
@@ -53,9 +50,14 @@ public class HomePageTest extends BaseTest{
     @Test(description = "5")
     public void selectAllCheckBoxesAndVerify() {
         String email = HomePageHelper.setValid_email();
-        String name = "Ar";
+        String name = "Anna";
         String gender = "Женский";
         List<Integer> checkBoxIndices = List.of(0, 1);
+        try {
+            Thread.sleep(3000); // задержка на 5 секунд
+        } catch (InterruptedException e) {
+            // обработка исключения
+        }
 
         homePageHelper.fillForm(email, name, gender, checkBoxIndices , 0);
 
@@ -84,7 +86,6 @@ public class HomePageTest extends BaseTest{
 
             String[] data = homePageHelper.getDataFromTable();
 
-
             validateFormData(data, email, name, gender, null, radioBoxIndex);
             homePageHelper.clearFormFields();
         }
@@ -101,7 +102,7 @@ public class HomePageTest extends BaseTest{
 
         homePageHelper.clearFormFields();
 
-        email = "asda@mail";
+        //email = "asda@mail";
         homePageHelper.fillForm(email, name, null, null, null);
 
         Assert.assertTrue(homePageHelper.isEmailFormatErrorAlertDisplayed());

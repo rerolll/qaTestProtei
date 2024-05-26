@@ -16,13 +16,9 @@ public class AuthPageTest extends BaseTest{
     @BeforeMethod
     public void initTests(Method method){
         authPageHelper = PageFactory.initElements(driver, AuthPageHelper.class);
+        driver.navigate().refresh();
         Test testAnnotation = method.getAnnotation(Test.class);
         testCaseId = testAnnotation.description();
-    }
-
-    @BeforeClass
-    public void reloadPage() {
-        driver.navigate().refresh();
     }
 
     @Test(description = "1")
@@ -33,7 +29,6 @@ public class AuthPageTest extends BaseTest{
 
     @Test(description = "2")
     public void login_in_invalid_password() {
-        driver.navigate().refresh();
         String invalid_password = "Password123!";
         homePageHelper.login(VALID_EMAIL, invalid_password);
 
@@ -43,7 +38,6 @@ public class AuthPageTest extends BaseTest{
 
     @Test(description = "3")
     public void login_in_invalid_email() {
-        driver.navigate().refresh();
         String invalid_email = "smth@protei.ru";
         homePageHelper.login(invalid_email, VALID_PASSWORD);
 
