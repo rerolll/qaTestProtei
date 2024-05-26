@@ -1,0 +1,9 @@
+qa\test\HomePageTest.class
+qa\pages\AuthPageHelper.class
+qa\test\AuthPageTest.class
+qa\pages\resources\TakeJsonData.class
+qa\test\BaseTest.class
+gurock\testrail\APIException.class
+gurock\testrail\APIClient.class
+qa\pages\BasePageHelper.class
+qa\pages\HomePageHelper.class

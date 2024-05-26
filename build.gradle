@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.seleniumhq.selenium:selenium-java:4.19.1'
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+    implementation 'io.github.bonigarcia:webdrivermanager:5.8.0'
+    testImplementation 'org.testng:testng:7.10.2'
+}
+
+test {
+    useTestNG()
+}
+
+tasks.withType(JavaCompile) {
+    sourceCompatibility = '17'
+    targetCompatibility = '17'
+    options.encoding = 'UTF-8'
+}
