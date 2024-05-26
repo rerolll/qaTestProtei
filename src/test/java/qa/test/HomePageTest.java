@@ -4,7 +4,6 @@ import org.openqa.selenium.support.PageFactory;
 
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -53,11 +52,6 @@ public class HomePageTest extends BaseTest{
         String name = "Anna";
         String gender = "Женский";
         List<Integer> checkBoxIndices = List.of(0, 1);
-        try {
-            Thread.sleep(3000); // задержка на 5 секунд
-        } catch (InterruptedException e) {
-            // обработка исключения
-        }
 
         homePageHelper.fillForm(email, name, gender, checkBoxIndices , 0);
 
@@ -102,7 +96,7 @@ public class HomePageTest extends BaseTest{
 
         homePageHelper.clearFormFields();
 
-        //email = "asda@mail";
+        email = "asda@mail";
         homePageHelper.fillForm(email, name, null, null, null);
 
         Assert.assertTrue(homePageHelper.isEmailFormatErrorAlertDisplayed());
